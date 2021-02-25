@@ -1,6 +1,6 @@
 .gallery {
 	padding-top: var(--padding);
-	padding-bottom: 71px;
+	padding-bottom: 72px;
 	background-image: url('../../img/gallery-bg.jpg');
 	background-repeat: no-repeat;
 	background-size: cover;
@@ -29,7 +29,7 @@
 }
 
 .gallery__select-name {
-	margin-bottom: 10px;
+	margin-bottom: 12px;
 	color: var(--white);
 }
 
@@ -177,6 +177,7 @@
 
 .gallery__card-image {
 	width: 100%;
+	height: 100%;
 }
 
 .gallery__card-icon {
@@ -190,7 +191,7 @@
 	right: 25px;
 	left: 25px;
 	background-color: #00000080;
-	transition: all var(--time) var(--func);
+	transition: opacity var(--time) var(--func);
 	z-index: 5;
 }
 
@@ -215,7 +216,7 @@
 
 .gallery__card-link:active:before{
 	background-color: #C283F340;
-	transition: all var(--time) var(--func);
+	transition: background-color var(--time) var(--func);
 }
 
 @media (hover: none) {
@@ -236,7 +237,7 @@
 	.gallery__card-link:hover:before,
 	.gallery__card-link:active:before{
 		background-color: #C283F340;
-		transition: all var(--time) var(--func);
+		transition: background-color var(--time) var(--func);
 	}
 }
 

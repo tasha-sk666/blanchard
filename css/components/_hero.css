@@ -27,14 +27,15 @@
 }
 
 .hero__title {
-	margin-bottom: 22px;
+	margin-bottom: 20px;
+	margin-left: -0.1em;
 	font-weight: 700;
 	font-size: 72px;
 	color: var(--white);
 }
 
 .hero__des {
-	margin-bottom: 90px;
+	margin-bottom: 91px;
 	font-weight: 700;
 	color: var(--white);
 	line-height: 30px;
@@ -46,7 +47,6 @@
 	border: 3px solid transparent;
 	background-color: var(--mid-purple);
 	color: var(--white);
-	transition: all .5s var(--func);
 }
 
 .hero__btn:hover {

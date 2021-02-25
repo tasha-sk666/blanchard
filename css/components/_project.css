@@ -3,10 +3,6 @@
 	padding-bottom: var(--padding);
 }
 
-.project__title {
-	margin-bottom: 20px;
-}
-
 .project__des {
 	margin-bottom: 20px;
 	width: 66%;
@@ -14,11 +10,17 @@
 
 .project__des > a {
 	color: var(--mid-purple);
-	transition: color var(--time) var(--func);
+	border-bottom: 1px solid transparent;
+	transition: color var(--time) var(--func), border-bottom var(--time) var(--func);
 }
 
 .project__des > a:hover {
+	border-bottom: 1px solid var(--dark-purple);
+}
+
+.project__des > a:active {
 	color: var(--dark-purple);
+	border-bottom: 1px solid var(--dark-purple);
 }
 
 .project__subtitle {
@@ -44,6 +46,21 @@
 	height: 100%;
 }
 
+.tooltip > button:hover > svg,
+.tooltip > button:active > svg {
+	fill: var(--dark-purple);
+	stroke: var(--white);
+}
+
+.tooltip > button:hover + .tooltip__text,
+.tooltip > button:active + .tooltip__text {
+	display: block;
+}
+
+.tooltip > button:focus-visible {
+	outline: 2px solid var(--dark-purple);
+}
+
 .tooltip__text {
 	display: none;
 	position: absolute;
@@ -59,7 +76,6 @@
 	color: var(--white);
 	text-align: center;
 	z-index: 1;
-	transition: all var(--time) var(--func);
 }
 
 .tooltip__text::after {
@@ -75,21 +91,6 @@
 	border-color: var(--ligth-grey) transparent transparent transparent;
 }
 
-.tooltip > button:hover + .tooltip__text,
-.tooltip > button:active + .tooltip__text {
-	display: block;
-}
-
-.tooltip > button:focus-visible {
-	outline: 2px solid var(--dark-purple);
-}
-
-.tooltip > button:hover > svg,
-.tooltip > button:active > svg {
-	fill: var(--dark-purple);
-	stroke: var(--white);
-}
-
 .project__slider {
 	position: relative;
 	margin: 0 70px;
@@ -100,6 +101,7 @@
 	position: absolute;
 	top: 40%;
 	z-index: 6;
+	background-color: #ececec;
 }
 
 .project__swiper-button-prev {
@@ -108,6 +110,11 @@
 
 .project__swiper-button-next {
 	right: -70px;
+}
+
+.project__swiper-button-prev > .main__swiper-button-svg,
+.project__swiper-button-next > .main__swiper-button-svg {
+	stroke: #000;
 }
 
 .project__slider-container {
@@ -146,6 +153,7 @@
 	.project__des > a:hover,
 	.project__des > a:active {
 		color: var(--dark-purple);
+		border-bottom: 1px solid var(--dark-purple);
 	}
 
 	.tooltip__btn:hover .tooltip__text,
@@ -169,10 +177,6 @@
 		width: 100%;
 	}
 
-	.project__subtitle {
-		margin-bottom: 18px;
-	}
-
 	.project__card {
 		height: 128px;
 	}
@@ -193,12 +197,12 @@
 @media ( max-width: 980px) {
 
 	.project__des {
-    width: 99%;
+    width: 98%;
 		margin-bottom: 25px;
 	}
 
 	.project__subtitle {
-		margin-bottom: 30px;
+		margin-bottom: 28px;
 	}
 
 	.project__card {
@@ -210,12 +214,11 @@
 	}
 
 	.project__swiper-button-prev, .project__swiper-button-next {
-		top: 30%;
+		top: 36%;
 	}
 }
 
 @media ( max-width: 720px) {
-
 	.project__title {
 		margin-bottom: 14px;
 	}
@@ -228,9 +231,21 @@
 		margin-bottom: 15px;
 	}
 
+	.project__slider {
+		margin: 0 46px;
+	}
+
 	.project__swiper-button-prev,
 	.project__swiper-button-next {
 		top: 28%;
+	}
+
+	.project__swiper-button-prev {
+    left: -47px;
+	}
+
+	.project__swiper-button-next {
+    right: -47px;
 	}
 
 	.project__card {
@@ -240,5 +255,4 @@
 	.project__card-content > img {
 		height: 60%;
 	}
-
 }

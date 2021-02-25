@@ -8,47 +8,49 @@
 }
 
 .catalog__title {
-	margin-right: 30px;
+	margin-right: 40px;
 }
 
 .tab {
 	display: flex;
-	align-items: baseline;
+	align-items: center;
 }
 
-.catalog__row.content-open {
+.catalog__row.catalog__row--active {
 	display:block;
 }
 
-.tab__item {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	border-radius: 50%;
-	border: 2px solid transparent;
-	padding: 10px;
-}
-
-.tab__item.tab-open {
-	border: 2px solid var(--mid-purple);
-}
-
 .tab__item:not(:last-child) {
-	margin-right: 26px;
+	margin-right: 51px;
 }
 
 .tab__btn {
-	padding: 5px;
+	position: relative;
 	display: block;
 	width: 45px;
 	height: 45px;
-	padding: 0;
-	border-radius: 50%;
+	border-radius: 100%;
 	border: 2px solid transparent;
 	background-repeat: no-repeat;
 	background-position: center;
-	transition: all var(--time) var(--func);
+	transition: box-shadow var(--time) var(--func);
 }
+
+.tab__btn:before {
+	position: absolute;
+	opacity: 0;
+	content: "";
+	top: -11px;
+	left: -11px;
+	width: 65px;
+	height: 65px;
+	border: 2px solid var(--dark-purple);
+	border-radius: 100%;
+}
+
+.tab__btn.tab__btn--active:before {
+	opacity: 1;
+	}
 
 .tab__btn:hover {
 	box-shadow: 0px 0px 20px #9d5cd0b3;
@@ -60,7 +62,7 @@
 }
 
 .catalog__des {
-	margin-bottom: 42px;
+	margin-bottom: 41px;
 	width: 69%;
 }
 
@@ -86,14 +88,14 @@
 	transition: opacity var(--time) var(--func);
 }
 
-.catalog__card.current {
+.catalog__card--active {
 	display:block;
 }
 
 .catalog__image {
 	margin-bottom: 29px;
 	width: 100%;
-	height: 470px;
+	height: 469px;
 }
 
 .catalog__subtitle {
@@ -161,7 +163,7 @@
 	border: 2px solid transparent;
 	border-radius: 50%;
 	text-align: center;
-	transition: all var(--time) var(--func);
+	transition: background-color var(--time) var(--func);
 }
 
 .ui-icon-circle-arrow-e {
@@ -222,47 +224,39 @@
 
 .accordion__item {
 	margin-right: 60px;
-	border: 2px solid transparent;
-	font-weight: 400;
-	font-size: 16px;
-	line-height: 28px;
-	transition: all var(--time) var(--func);
-	white-space: nowrap;
 }
 
 .accordion__link {
+	font-weight: 400;
+	font-size: 16px;
+	line-height: 2;
+	white-space: nowrap;
 	border-bottom: 1px solid transparent;
-	transition: all var(--time) var(--func);
+	transition: color var(--time) var(--func),border-bottom var(--time) var(--func);
 }
 
-.accordion__link:focus-visible .accordion__item {
-	outline: none;
-	border: 2px solid var(--dark-purple);
+.accordion__link--active {
+	color: var(--dark-purple);
+	border-bottom: 1px solid var(--dark-purple);
+}
+
+.accordion__link:focus-visible {
+	outline: 2px solid var(--dark-purple);
 }
 
 .accordion__link:hover {
 	color: var(--mid-purple);
-	border-bottom: 1px solid var(--mid-purple);
 }
 
 .accordion__link:active {
 	color: var(--dark-purple);
-	border-bottom: transparent;
-}
-
-.accordion__link.link-open {
-	color: red;
-}
-
-.accordion__item.current > .accordion__link {
-	color: var(--mid-purple);
 }
 
 @media (hover: none) {
 	.accordion__link:hover,
 	.accordion__link:active {
 		color: var(--dark-purple);
-		border-bottom: transparent;
+		border-bottom: 1px solid var(--dark-purple);
 	}
 }
 
@@ -277,12 +271,8 @@
 }
 
 @media ( max-width: 1024px) {
-	.catalog__image {
-		height: 274px;
-	}
-
-	.tab {
-		align-items: center;
+	.catalog__des {
+		margin-bottom: 41px;
 	}
 
 	.catalog__col {
@@ -293,18 +283,12 @@
 		padding-right: 0;
 	}
 
-	.catalog__subtitle {
-		margin-bottom: 9px;
+	.catalog__image {
+		height: 272px;
 	}
-
 }
 
 @media ( max-width: 980px ) {
-
-	.catalog__title {
-		margin-bottom: 19px;
-	}
-
 	.catolog__row-inner {
 		flex-direction: column-reverse;
 	}
@@ -323,7 +307,7 @@
 	}
 
 	.tab__item:not(:last-child) {
-		margin-right: 30px;
+		margin-right: 55px;
 	}
 
 	.accordion__list {
@@ -335,7 +319,7 @@
 	}
 
 	.catalog__col--accordion {
-		margin-bottom: 48px;
+		margin-bottom: 47px;
 	}
 
 	.catalog__image {
@@ -360,24 +344,27 @@
 	}
 
 	.tab {
-		margin-bottom: 12px;
-	}
-
-	.tab__item {
-		padding: 4px;
+		margin-bottom: 24px;
 	}
 
 	.tab__item:not(:last-child) {
-		margin-right: 19px;
-	}
-
-	.catalog__inner {
-		display: block;
+		margin-right: 32px;
 	}
 
 	.tab__btn {
 		width: 32px;
 		height: 32px;
+	}
+
+	.tab__btn:before {
+		top: -8px;
+		left: -8px;
+		width: 46px;
+		height: 45px;
+	}
+
+	.catalog__inner {
+		display: block;
 	}
 
 	.catalog__col:first-child {
@@ -390,7 +377,7 @@
 	}
 
 	.catalog__image {
-		margin-bottom: 20px;
+		margin-bottom: 18px;
 		height: 181px;
 	}
 
@@ -426,4 +413,3 @@
 		margin-bottom: 13px;
 	}
 }
-

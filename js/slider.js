@@ -1,5 +1,4 @@
-
-const projectSlider = document.querySelector('.project__slider-container')
+const projectSlider = document.querySelector('.project__slider-container');
 var mySwiperProject = new Swiper(projectSlider, {
 	navigation: {
 		nextEl: '.project__swiper-button-next',
@@ -12,7 +11,8 @@ var mySwiperProject = new Swiper(projectSlider, {
 		1650: {
 			slidesPerView: 3,
 		},
-		520: {
+		768: {
+			spaceBetween: 50,
 			slidesPerView: 2,
 		},
 		320: {
@@ -21,9 +21,9 @@ var mySwiperProject = new Swiper(projectSlider, {
 	},
 	observer: true,
 	observeParents: true,
-})
+});
 
-const heroSlider = document.querySelector('.hero__slider-container')
+const heroSlider = document.querySelector('.hero__slider-container');
 var mySwiperHero = new Swiper(heroSlider, {
 	slideClass: 'hero__slide',
 	slidesPerView: 1,
@@ -35,9 +35,9 @@ var mySwiperHero = new Swiper(heroSlider, {
 		delay: 2500,
 		disableOnInteraction: false,
 	},
-})
+});
 
-const gallerySlider = document.querySelector('.gallery__slider-container')
+const gallerySlider = document.querySelector('.gallery__slider-container');
 var mySwiperGallery = new Swiper(gallerySlider, {
 	pagination: {
 		el: '.main__swiper-pagination',
@@ -73,43 +73,9 @@ var mySwiperGallery = new Swiper(gallerySlider, {
 			spaceBetween: 10,
 		}
 	},
-})
+});
 
-var more = document.querySelectorAll('.event__btn');
-
-for (var i = 0; i < more.length; i++) {
-	more[i].addEventListener('click', function () {
-		var showPerClick = 6;
-
-		var hidden = document.querySelectorAll('div.hidden');
-		for (var i = 0; i < showPerClick; i++) {
-			if (!hidden[i]) return this.outerHTML = "";
-			hidden[i].classList.remove('hidden');
-		}
-	});
-}
-
-function eventOpen() {
-	if ($(window).width() > 980) {
-		$(".event__card:gt(1)").removeClass("hidden");
-	}
-	else {
-		$(".event__card:gt(1)").addClass("hidden");
-	}
-
-	if ($(window).width() < 600) {
-		$(".event__card:gt(2)").removeClass("hidden");
-		$(".event__card").removeClass("hidden");
-		$(".event__btn-container").css("display", "none")
-	}
-	else {
-		$(".event__card:gt(2)").addClass("hidden");
-	}
-}
-
-eventOpen();
-
-const eventSlider = document.querySelector('.event__slider-container');
+const eventSlider = document.querySelector('.cards');
 
 let mySwiperEvent;
 
@@ -117,10 +83,11 @@ function mobileSlider() {
 	if (window.innerWidth <= 600 && eventSlider.dataset.mobile == 'false') {
 		mySwiperEvent = new Swiper(eventSlider, {
 			sliderPerView: 1,
-			spaceBetween: 10,
-			slideClass: 'event__card',
+			spaceBetween: 15,
+			slideClass: 'card',
+			wrapperClass: 'cards__list',
 			pagination: {
-				el: '.event__swiper-pagination',
+				el: '.event__pagination',
 				clickable: true,
 			},
 		});
@@ -143,7 +110,7 @@ window.addEventListener('resize', () => {
 	mobileSlider();
 });
 
-const editionSlider = document.querySelector('.edition__slider-container')
+const editionSlider = document.querySelector('.edition__slider-container');
 
 function mobileSliderEdition() {
 	if ($(window).width() > 720) {
@@ -166,21 +133,25 @@ function mobileSliderEdition() {
 					slidesPerView: 3,
 					slidesPerGroup: 3,
 				},
+				1024: {
+					slidesPerView: 2,
+					spaceBetween: 45,
+				},
 				768: {
 					slidesPerView: 2,
 					slidesPerGroup: 2,
+					spaceBetween: 35,
 				},
 				320: {
 					slidesPerView: 1,
 					slidesPerGroup: 1,
-					spaceBetween: 35,
 				}
 			},
 		});
 	} else {
 		editionSlider.destroy();
 	}
-};
+}
 
 mobileSliderEdition();
 $(window).resize(mobileSliderEdition);
