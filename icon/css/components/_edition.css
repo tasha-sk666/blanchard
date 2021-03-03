@@ -1,0 +1,427 @@
+.edition {
+	padding-top: var(--padding);
+	padding-bottom: var(--padding);
+	background-image: url('../../img/edition-bg.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+}
+
+.edition__container {
+	display: flex;
+}
+
+.edition__title {
+	color: var(--white);
+}
+
+.checkbox {
+	margin-bottom: auto;
+}
+
+.edition__subtitle {
+	color: var(--white);
+	font-weight: 700;
+}
+
+.edition__content {
+	display: flex;
+	flex-direction: column;
+	margin-right: 110px;
+	min-width: 340px;
+}
+
+.checkbox__item {
+	line-height: 1.8;
+	white-space: nowrap;
+}
+
+.checkbox__name {
+	font-weight: 400;
+	font-size: 16px;
+	color: var(--white);
+	transition: color var(--time) var(--func);
+}
+
+.checkbox__item:last-child {
+	margin-bottom: 0;
+}
+
+.checkbox__label {
+	position: relative;
+	padding-left: 25px;
+	cursor: pointer;
+}
+
+.checkbox__input[type="checkbox"] {
+	position: absolute;
+  z-index: -1;
+	opacity: 0;
+}
+
+.checkbox__check {
+	position: absolute;
+	left: 0;
+	top: 30%;
+	width: 12px;
+	height: 12px;
+	border: 1px solid var(--white);
+	transition: opacity var(--time) var(--func);
+}
+
+.checkbox__check:before {
+	position: absolute;
+	content: "";
+	top: 3px;
+	left: 3px;
+	opacity: 0;
+	width: 4px;
+	height: 4px;
+	border-radius: 50%;
+	background-color: var(--purple);
+	transition: opacity var(--time) var(--func);
+}
+
+.checkbox__input:checked + .checkbox__check:before {
+	opacity: 1;
+}
+
+.checkbox__input:checked + .checkbox__check {
+	border: 1px solid var(--purple);
+}
+
+.checkbox__input:checked ~ .checkbox__name {
+	color: var(--purple);
+}
+
+.checkbox__label:hover > .checkbox__check {
+	border: 1px solid var(--purple);
+}
+
+.checkbox__label:hover > .checkbox__name {
+	color: var(--purple);
+}
+
+.checkbox__input:active + .checkbox__check {
+	border: 1px solid var(--dark-purple);
+}
+
+.checkbox__input:active ~ .checkbox__name {
+	color: var(--dark-purple);
+}
+
+.checkbox__input:focus-visible ~ .checkbox__name {
+	outline: 2px solid var(--dark-purple);
+}
+
+.checkbox__filter {
+	display: none;
+}
+
+.range__inner {
+	display: flex;
+	align-items: center;
+	margin-top: 6px;
+	max-width: 278px;
+	border-radius: 6px;
+	border: 1px solid #ffffff50;
+}
+
+.range__text {
+	padding: 0 10px;
+	font-size: 16px;
+	color: var(--white);
+}
+
+.range__value {
+	width: 100%;
+	padding: 9px 7px;
+	font-size: 16px;
+	color: var(--white);
+	background-color:#9d5cd080;
+	border: 1px solid transparent;
+}
+
+.range__value::placeholder {
+	color: var(--white);
+}
+
+.edition__slider-container {
+	overflow: hidden;
+	width: 100%;
+}
+
+.edition-swiper-buttons {
+	padding-top: 32px;
+	padding-bottom: 32px;
+}
+
+.edition__card {
+	flex-shrink: 0;
+}
+
+.edition__card-image {
+	margin-bottom: 20px;
+	width: 100%;
+	height: 390px;
+}
+
+.edition__card-content {
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 17px;
+	font-size: 16px;
+}
+
+.edition__card-book {
+	font-weight: 700;
+	color: var(--white);
+	line-height: 1.3;
+}
+
+.edition__card-author {
+	font-weight: 400;
+	color: var(--white);
+	line-height: 1.4;
+}
+
+.edition__card-price {
+	color: var(--white);
+}
+
+.edition__btn {
+	padding: 8px 20px;
+	font-size: 16px;
+	color: var(--white);
+}
+
+@media ( max-width: 1280px) {
+
+	.checkbox {
+		margin-bottom: 31px;
+	}
+
+	.edition__content {
+		margin-right: 17px;
+    min-width: 278px;
+	}
+
+	.edition__card-image {
+		margin-bottom: 10px;
+		height: 320px;
+	}
+
+	.edition__subtitle {
+		margin-right: 15px;
+	}
+}
+
+@media ( max-width: 980px) {
+	.edition {
+		padding-bottom: 62px;
+	}
+
+	.edition__container {
+		position: unset;
+		display: block;
+	}
+
+	.edition__content {
+		min-width: 100%;
+		margin-right: 0;
+	}
+
+	.checkbox {
+		margin-bottom: 24px;
+	}
+
+	.checkbox__list {
+    display: flex;
+		flex-direction: column;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		column-gap: 50px;
+		height: 131px;
+	}
+
+	.checkbox__item {
+		margin-right: 10px;
+	}
+
+	.edition__range {
+		max-width: 341px;
+	}
+
+	.edition-swiper-buttons {
+		margin-left: -26px;
+		padding-top: 52px;
+	}
+
+	.edition__slider-container {
+		padding: 0 27px;
+	}
+
+	.edition__card-image {
+		margin-bottom: 10px;
+	}
+}
+
+@media (max-width: 720px) {
+	.edition {
+		padding-bottom: var(--padding);
+	}
+
+	.checkbox {
+		margin-bottom: 0;
+	}
+
+	.checkbox__list {
+		display: none;
+		flex-wrap: nowrap;
+		height: auto;
+	}
+
+	.checkbox__list--active {
+		display: flex;
+	}
+
+	.checkbox__title {
+		position: relative;
+		display: block;
+		width: 100%;
+		margin-right: 0;
+		padding: 3px 0;
+		border-top: 1px solid  #ffffff80;
+		border-bottom: 1px solid  #ffffff80;
+	}
+
+	.checkbox__title:before {
+		content: "";
+		position: absolute;
+		top: 38%;
+		right: 0;
+		width: 12px;
+		height: 12px;
+		background-image: url('../../icon/arrow-top.svg');
+		background-repeat: no-repeat;
+		background-size: cover;
+		background-position: center;
+	}
+
+	.checkbox__title--active:before {
+		transform: rotate(180deg);
+	}
+
+	.checkbox__filter {
+		display: flex;
+		align-items: center;
+		padding-top: 8px;
+    padding-bottom: 11px;
+		border-bottom: 1px solid  #ffffff80;
+	}
+
+	.checkbox__btn {
+		position: relative;
+		margin-left: auto;
+		padding: 0;
+		width: 12px;
+		height: 12px;
+		border: none;
+	}
+
+	.checkbox__btn::before,
+	.checkbox__btn:after {
+		position: absolute;
+		content: "";
+		right: 0;
+		bottom: 0;
+		width: 15px;
+		height: 1px;
+		background-color: var(--purple);
+	}
+
+	.checkbox__btn::before {
+		transform: rotate(45deg);
+	}
+
+	.checkbox__btn:after {
+		transform: rotate(-45deg);
+	}
+
+	.checkbox__item {
+		margin-right: 0;
+		border-bottom: 1px solid  #ffffff80;
+	}
+
+	.checkbox__label {
+		display: inline-block;
+		width: 100%;
+	}
+
+	.edition__range {
+		margin-top: 17px;
+		margin-bottom: 53px;
+	}
+
+	.range__value {
+		padding: 9px 11px;
+	}
+
+	.range__text {
+		padding: 0 8px 0 9px;
+	}
+
+	.edition__slider-container > .swiper-wrapper {
+		flex-wrap: wrap;
+		justify-content: space-between;
+		margin: 0;
+	}
+
+	.edition__slider-container {
+		padding: 0;
+	}
+
+	.edition-swiper-buttons {
+		display: none;
+	}
+
+	.edition__card {
+		margin-bottom: 52px;
+		width: 40%;
+		min-width: 132px;
+	}
+
+	.edition__card:last-child {
+		margin-bottom: 0;
+	}
+
+	.edition__card-image {
+		margin-bottom: 6px;
+		height: 143px;
+	}
+
+	.edition__card-content {
+		display: block;
+		margin-bottom: 10px;
+	}
+
+	.edition__card-content,
+	.edition__card-book,
+	.edition__card-author {
+		font-size: 12px;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		overflow: hidden;
+	}
+
+	.edition__card-price {
+		line-height: 1.7;
+	}
+
+	.edition__btn {
+		padding: 11px 35px;
+		font-size: 12px;
+	}
+
+}
+
