@@ -23,16 +23,16 @@ $(function () {
 	}
 });
 
-$('.burger').click(function() {
+$('.burger').click(function () {
 	$('.burger').toggleClass('burger--active');
 	$('.menu-header').toggleClass('menu-header--active');
 });
 
 $(document).click(function (e) {
-if (!$('.burger').is(e.target) && !$('.menu-header').is(e.target) && $('.menu-header').has(e.target).length === 0) {
+	if (!$('.burger').is(e.target) && !$('.menu-header').is(e.target) && $('.menu-header').has(e.target).length === 0) {
 		$('.menu-header').removeClass('menu-header--active');
 		$('.burger').removeClass('burger--active');
-}
+	}
 });
 
 $('.nav__link, .hero__btn').click(function () {
@@ -139,7 +139,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	}
 });
 
-$(document).ready(function(){
+$(document).ready(function () {
 
 	if ($(window).width() > 980) {
 		var numToShow = 3;
@@ -160,13 +160,13 @@ $(document).ready(function(){
 	}
 	list.slice(0, numToShow).show();
 
-	button.click(function(){
-			var showing = list.filter(':visible').length;
-			list.slice(showing - 1, showing + numToShow).fadeIn();
-			var nowShowing = list.filter(':visible').length;
-			if (nowShowing >= numInList) {
-				button.hide();
-			}
+	button.click(function () {
+		var showing = list.filter(':visible').length;
+		list.slice(showing - 1, showing + numToShow).fadeIn();
+		var nowShowing = list.filter(':visible').length;
+		if (nowShowing >= numInList) {
+			button.hide();
+		}
 	});
 
 });
@@ -177,6 +177,28 @@ const checkboxList = document.querySelector('.checkbox__list');
 checkboxTitle.addEventListener('click', () => {
 	checkboxTitle.classList.toggle('checkbox__title--active');
 	checkboxList.classList.toggle('checkbox__list--active');
+});
+
+
+$(document).ready(function() {
+	$('.checkbox__item:nth-child(4)').children().children().trigger('click');
+});
+
+$('.checkbox__input').click(function () {
+	var el = $(this);
+
+	if (el.prop('checked')) {
+		$('.checkbox__filter').append('<span class="checkbox__name checkbox__name--added" valu="'+el.val()+'">'+ el.val()+'</span>');
+	}
+	else {
+		$('[valu="' + el.val() + '"]').remove();
+	}
+
+});
+
+$('.checkbox__btn').click(function () {
+	$('.checkbox__input').prop('checked', false);
+	$('.checkbox__name--added').remove();
 });
 
 var max_chars = 5;

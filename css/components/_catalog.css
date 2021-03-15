@@ -37,15 +37,15 @@
 }
 
 .tab__btn:before {
-	position: absolute;
-	opacity: 0;
 	content: "";
+	position: absolute;
 	top: -11px;
 	left: -11px;
 	width: 65px;
 	height: 65px;
 	border: 2px solid var(--dark-purple);
 	border-radius: 100%;
+	opacity: 0;
 }
 
 .tab__btn.tab__btn--active:before {
@@ -127,6 +127,10 @@
 	transition: color var(--time) var(--func);
 }
 
+.accordion__subtitle.ui-accordion-header-active {
+	border-bottom: 1px solid var(--mid-purple);
+}
+
 .accordion__subtitle:first-child {
 	border-top: 1px solid #cacaca;
 }
@@ -154,9 +158,9 @@
 
 .ui-icon-circle-arrow-e,
 .ui-icon-circle-arrow-s {
-	margin-left: auto;
 	order: 1;
 	position: relative;
+	margin-left: auto;
 	min-width: 50px;
 	width: 50px;
 	height: 50px;

@@ -72,14 +72,15 @@
 .checkbox__check:before {
 	position: absolute;
 	content: "";
-	top: 3px;
-	left: 3px;
+	top: 50%;
+  transform: translateY(-50%);
+	left: 50%;
+  transform: translateX(-50%);
 	opacity: 0;
-	width: 4px;
-	height: 4px;
-	border-radius: 50%;
+	width: 25%;
+	height: 25%;
+	border-radius: 100%;
 	background-color: var(--purple);
-	transition: opacity var(--time) var(--func);
 }
 
 .checkbox__input:checked + .checkbox__check:before {
@@ -115,7 +116,70 @@
 }
 
 .checkbox__filter {
+	position: relative;
 	display: none;
+	padding-right: 20px;
+	padding-top: 8px;
+	padding-bottom: 11px;
+	border-bottom: 1px solid  #ffffff80;
+}
+
+.checkbox__name--added {
+	position: relative;
+	margin-right: 15px;
+	padding-left: 25px;
+	color: var(--purple);
+	white-space: nowrap;
+}
+
+.checkbox__name--added:last-child {
+	margin-right: 0;
+}
+
+.checkbox__name--added:after {
+	content: "";
+	position: absolute;
+	left: 0;
+	top: 30%;
+	width: 12px;
+	height: 12px;
+	border: 1px solid var(--purple);
+	transition: opacity var(--time) var(--func);
+}
+
+.checkbox__name--added:before {
+	content: "";
+	position: absolute;
+	top: 50%;
+	left: 5px;
+	width: 2px;
+	height: 2px;
+	border-radius: 100%;
+	background-color: var(--purple);
+}
+
+.checkbox__check {
+	position: absolute;
+	left: 0;
+	top: 30%;
+	width: 12px;
+	height: 12px;
+	border: 1px solid var(--white);
+	transition: opacity var(--time) var(--func);
+}
+
+.checkbox__check:before {
+	content: "";
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 25%;
+	height: 25%;
+  transform: translateX(-50%);
+  transform: translateY(-50%);
+	border-radius: 100%;
+	background-color: var(--purple);
+	opacity: 0;
 }
 
 .range__inner {
@@ -136,10 +200,10 @@
 .range__value {
 	width: 100%;
 	padding: 9px 7px;
+	border: 1px solid transparent;
+	background-color:#9d5cd080;
 	font-size: 16px;
 	color: var(--white);
-	background-color:#9d5cd080;
-	border: 1px solid transparent;
 }
 
 .range__value::placeholder {
@@ -313,15 +377,13 @@
 	}
 
 	.checkbox__filter {
-		display: flex;
-		align-items: center;
-		padding-top: 8px;
-    padding-bottom: 11px;
-		border-bottom: 1px solid  #ffffff80;
+		display: block;
 	}
 
 	.checkbox__btn {
-		position: relative;
+		position: absolute;
+		top: 0;
+		right: 0;
 		margin-left: auto;
 		padding: 0;
 		width: 12px;

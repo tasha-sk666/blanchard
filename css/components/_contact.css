@@ -7,9 +7,9 @@
 	display: flex;
 	align-items: center;
 	padding-left: calc((100% - 1630px) / 2 + 15px);
-	background-color: var(--white);
 	border-top: 1px solid var(--ligth-grey);
 	border-right: 1px solid var(--ligth-grey);
+	background-color: var(--white);
 }
 
 .contact__content-wrapper {
