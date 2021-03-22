@@ -6,6 +6,7 @@
 .contact__content {
 	display: flex;
 	align-items: center;
+	/* padding-left: calc((100% - 1630px) / 2 + 15px); */
 	padding-left: calc((100% - 1630px) / 2 + 15px);
 	border-top: 1px solid var(--ligth-grey);
 	border-right: 1px solid var(--ligth-grey);
@@ -124,6 +125,13 @@
 [class*="ground-pane"] {
 	filter: grayscale(1);
 }
+
+@media (max-width: 1630px) {
+	.contact__content {
+		padding-left: 15px;
+	}
+}
+
 
 @media (max-width: 1440px) {
 	.contact__content {

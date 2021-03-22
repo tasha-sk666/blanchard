@@ -1,7 +1,6 @@
-
-var windowWidth = $(window).width();
-
 $(function () {
+	var screenWidth = $(window).width();
+
 	$('#search__btn').click(function () {
 		$('#search__btn').toggleClass('search-active');
 		$('.search__wrapper').toggleClass('search-active');
@@ -16,7 +15,7 @@ $(function () {
 		return false;
 	});
 
-	if (windowWidth < 980) {
+	if (screenWidth < 980) {
 		$('#search__btn').click(function () {
 			$('#search--mob').toggleClass('container');
 		});
@@ -75,6 +74,74 @@ const NewSelect = () => {
 NewSelect();
 
 
+var overlay = $('.overlay')
+var cardBtn = $(".gallery__card-btn");
+var modal = $(".gallery-modal");
+var close = $(".gallery-modal__close");
+
+cardBtn.on("click", function () {
+
+	if (overlay.css("display") == "none") {
+		overlay.addClass('overlay--open');
+		modal.addClass('gallery-modal--open');
+    setTimeout(function () {
+      overlay.addClass('in');
+      modal.addClass('in');
+    }, 15);
+	}
+	else {
+		modal.removeClass('in');
+		overlay.removeClass('in');
+		modal.one('transitionend', function(e) {
+			modal.removeClass('gallery-modal--open');
+    });
+    overlay.one('transitionend', function(e) {
+      overlay.removeClass('overlay--open');
+    });
+	}
+
+	img = $(this).parent().find(".gallery__card-image").attr("src");
+	imgAlt = $(this).parent().find(".gallery__card-image").attr("alt");
+	subtitle = $(this).parent().find(".gallery__card-subtitle").html();
+	namePicture = $(this).parent().find(".gallery__card-name").html();
+	data = $(this).parent().find(".gallery__card-subds").html();
+	descr = $(this).parent().find(".gallery__card-des").html();
+
+	$(".gallery-modal__img").attr("src", img);
+	$(".gallery-modal__img").attr("alt", imgAlt);
+	$(".gallery-modal__subtitle").html(subtitle);
+	$(".gallery-modal__name").html(namePicture);
+	$(".gallery-modal__subdes").html(data);
+	$(".gallery-modal__des").html(descr);
+
+	return false;
+});
+
+close.on("click", function () {
+	modal.removeClass('in');
+	overlay.removeClass('in');
+	modal.one('transitionend', function(e) {
+		modal.removeClass('gallery-modal--open');
+	});
+	overlay.one('transitionend', function(e) {
+		overlay.removeClass('overlay--open');
+	});
+});
+
+overlay.on("click", function (event) {
+	e = event || window.event;
+	if (e.target == this) {
+		modal.removeClass('in');
+		overlay.removeClass('in');
+		modal.one('transitionend', function(e) {
+			modal.removeClass('gallery-modal--open');
+    });
+    overlay.one('transitionend', function(e) {
+      overlay.removeClass('overlay--open');
+    });
+	}
+});
+
 $(function () {
 	var icons = {
 		header: "ui-icon-circle-arrow-e",
@@ -128,6 +195,7 @@ document.addEventListener('DOMContentLoaded', () => {
 					document.querySelector(`[data-link-path="${linkPath}"]`).classList.add('accordion__link--active');
 					linkHandler(linkPath);
 				}
+
 				return false
 			});
 
@@ -180,15 +248,19 @@ checkboxTitle.addEventListener('click', () => {
 });
 
 
-$(document).ready(function() {
-	$('.checkbox__item:nth-child(4)').children().children().trigger('click');
+$(document).ready(function () {
+	$('.checkbox__item:nth-child(4)').children().children().click();
+
+
+
 });
+
 
 $('.checkbox__input').click(function () {
 	var el = $(this);
 
 	if (el.prop('checked')) {
-		$('.checkbox__filter').append('<span class="checkbox__name checkbox__name--added" valu="'+el.val()+'">'+ el.val()+'</span>');
+		$('.checkbox__filter').append('<div class="checkbox__name checkbox__name--added" valu="' + el.val() + '">' + el.val() + '</div>');
 	}
 	else {
 		$('[valu="' + el.val() + '"]').remove();

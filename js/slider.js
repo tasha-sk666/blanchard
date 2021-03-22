@@ -11,7 +11,7 @@ var mySwiperProject = new Swiper(projectSlider, {
 		1650: {
 			slidesPerView: 3,
 		},
-		768: {
+		600: {
 			spaceBetween: 50,
 			slidesPerView: 2,
 		},
@@ -28,60 +28,70 @@ var mySwiperHero = new Swiper(heroSlider, {
 	slideClass: 'hero__slide',
 	slidesPerView: 1,
 	effect: 'fade',
-  fadeEffect: {
-    crossFade: true
-  },
+	fadeEffect: {
+		crossFade: true
+	},
 	autoplay: {
 		delay: 2500,
 		disableOnInteraction: false,
 	},
 });
 
-const gallerySlider = document.querySelector('.gallery__slider-container');
-var mySwiperGallery = new Swiper(gallerySlider, {
-	pagination: {
-		el: '.main__swiper-pagination',
-		type: 'fraction',
-	},
-	navigation: {
-		nextEl: '.main__swiper-button-next',
-		prevEl: '.main__swiper-button-prev',
-	},
-	slideClass: 'gallery__card',
-	spaceBetween: 50,
-	slidesPerView: 3,
-	slidesPerColumn: 2,
-	slidesPerGroup: 3,
-	paginationClickable: true,
-	breakpoints: {
-		1650: {
-			slidesPerView: 3,
-			slidesPerColumn: 2,
-			slidesPerGroup: 3,
-		},
+const gallerySlider = document.querySelector('.gallery__slider-container')
+let swiperGallery;
 
-		768: {
-			slidesPerView: 2,
-			slidesPerGroup: 2,
-			spaceBetween: 33,
+function initSwiperGallery() {
+	 swiperGallery = new Swiper(gallerySlider, {
+		pagination: {
+			el: '.main__swiper-pagination',
+			type: 'fraction',
 		},
+		navigation: {
+			nextEl: '.main__swiper-button-next',
+			prevEl: '.main__swiper-button-prev',
+		},
+		slideClass: 'gallery__card',
+		spaceBetween: 50,
+		slidesPerView: 3,
+		slidesPerColumn: 2,
+		slidesPerGroup: 3,
+		paginationClickable: true,
+		breakpoints: {
+			1650: {
+				slidesPerView: 3,
+				slidesPerColumn: 2,
+				slidesPerGroup: 3,
+			},
 
-		320: {
-			slidesPerView: 1,
-			slidesPerColumn: false,
-			slidesPerGroup: 1,
-			spaceBetween: 10,
-		}
-	},
+			600: {
+				slidesPerView: 2,
+				slidesPerGroup: 2,
+				spaceBetween: 33,
+			},
+
+			320: {
+				slidesPerView: 1,
+				slidesPerColumn: false,
+				slidesPerGroup: 1,
+				spaceBetween: 10,
+			}
+		},
+	});
+};
+
+initSwiperGallery();
+
+$(window).on('resize', function () {
+	initSwiperGallery();
 });
 
-const eventSlider = document.querySelector('.cards');
 
-let mySwiperEvent;
+let swiperEvent;
+const eventSlider = document.querySelector('.cards');
 
 function mobileSlider() {
 	if (window.innerWidth <= 600 && eventSlider.dataset.mobile == 'false') {
-		mySwiperEvent = new Swiper(eventSlider, {
+		swiperEvent = new Swiper(eventSlider, {
 			sliderPerView: 1,
 			spaceBetween: 15,
 			slideClass: 'card',
@@ -99,22 +109,24 @@ function mobileSlider() {
 		eventSlider.dataset.mobile = 'false';
 
 		if (eventSlider.classList.contains('.swiper-container-initialized')) {
-			mySwiperEvent.destroy();
+			swiperEvent.destroy();
 		}
 	}
-}
+};
 
 mobileSlider();
 
-window.addEventListener('resize', () => {
+$(window).on('resize', function () {
 	mobileSlider();
 });
 
-const editionSlider = document.querySelector('.edition__slider-container');
+var swiperEdition = undefined;
+const editionSlider = document.querySelector('.edition__slider-container')
 
-function mobileSliderEdition() {
-	if ($(window).width() > 720) {
-		mySwiperEdition = new Swiper(editionSlider, {
+function initSwiperEdition() {
+	var screenWidth = $(window).width();
+	if (screenWidth > 720 && swiperEdition == undefined) {
+		swiperEdition = new Swiper(editionSlider, {
 			pagination: {
 				el: '.main__swiper-pagination',
 				type: 'fraction',
@@ -124,7 +136,6 @@ function mobileSliderEdition() {
 				prevEl: '.main__swiper-button-prev',
 			},
 			slideClass: 'edition__card',
-			spaceBetween: 50,
 			slidesPerView: 3,
 			slidesPerGroup: 3,
 			paginationClickable: true,
@@ -132,15 +143,13 @@ function mobileSliderEdition() {
 				1680: {
 					slidesPerView: 3,
 					slidesPerGroup: 3,
-				},
-				1024: {
-					slidesPerView: 2,
 					spaceBetween: 45,
 				},
 				768: {
 					slidesPerView: 2,
 					slidesPerGroup: 2,
 					spaceBetween: 35,
+
 				},
 				320: {
 					slidesPerView: 1,
@@ -148,11 +157,14 @@ function mobileSliderEdition() {
 				}
 			},
 		});
-	} else {
-		editionSlider.destroy();
+	} else if (screenWidth < 720 && swiperEdition != undefined) {
+		swiperEdition.destroy();
+		swiperEdition = undefined;
 	}
-}
+};
 
-mobileSliderEdition();
-$(window).resize(mobileSliderEdition);
+initSwiperEdition();
 
+$(window).on('resize', function () {
+	initSwiperEdition();
+});
