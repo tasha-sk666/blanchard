@@ -83,6 +83,12 @@
 	border: 1px solid #b81111;
 }
 
+.js-validate-error-label {
+	font-size: 0;
+	line-height: 0;
+	visibility: hidden;
+}
+
 .contact__social-subtitle {
 	font-size: 23px;
 	margin-bottom: 13px;

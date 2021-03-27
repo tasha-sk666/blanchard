@@ -84,20 +84,20 @@ cardBtn.on("click", function () {
 	if (overlay.css("display") == "none") {
 		overlay.addClass('overlay--open');
 		modal.addClass('gallery-modal--open');
-    setTimeout(function () {
-      overlay.addClass('in');
-      modal.addClass('in');
-    }, 15);
+		setTimeout(function () {
+			overlay.addClass('in');
+			modal.addClass('in');
+		}, 15);
 	}
 	else {
 		modal.removeClass('in');
 		overlay.removeClass('in');
-		modal.one('transitionend', function(e) {
+		modal.one('transitionend', function (e) {
 			modal.removeClass('gallery-modal--open');
-    });
-    overlay.one('transitionend', function(e) {
-      overlay.removeClass('overlay--open');
-    });
+		});
+		overlay.one('transitionend', function (e) {
+			overlay.removeClass('overlay--open');
+		});
 	}
 
 	img = $(this).parent().find(".gallery__card-image").attr("src");
@@ -120,10 +120,10 @@ cardBtn.on("click", function () {
 close.on("click", function () {
 	modal.removeClass('in');
 	overlay.removeClass('in');
-	modal.one('transitionend', function(e) {
+	modal.one('transitionend', function (e) {
 		modal.removeClass('gallery-modal--open');
 	});
-	overlay.one('transitionend', function(e) {
+	overlay.one('transitionend', function (e) {
 		overlay.removeClass('overlay--open');
 	});
 });
@@ -133,12 +133,12 @@ overlay.on("click", function (event) {
 	if (e.target == this) {
 		modal.removeClass('in');
 		overlay.removeClass('in');
-		modal.one('transitionend', function(e) {
+		modal.one('transitionend', function (e) {
 			modal.removeClass('gallery-modal--open');
-    });
-    overlay.one('transitionend', function(e) {
-      overlay.removeClass('overlay--open');
-    });
+		});
+		overlay.one('transitionend', function (e) {
+			overlay.removeClass('overlay--open');
+		});
 	}
 });
 
@@ -207,6 +207,19 @@ document.addEventListener('DOMContentLoaded', () => {
 	}
 });
 
+$(function () {
+	$('.accordion__link').click(function () {
+		var dataLink = $(this).attr('data-link-path');
+		var cardHeight = $(`.catalog__card[data-link-target="${dataLink}"]`).outerHeight()
+
+		if ($(window).width() < 980) {
+			$('html, body').animate({
+				scrollTop: $('.catalog').next().offset().top - cardHeight - 120
+			}, 1000)
+		}
+	});
+});
+
 $(document).ready(function () {
 
 	if ($(window).width() > 980) {
@@ -223,6 +236,7 @@ $(document).ready(function () {
 	var button = $(".event__btn");
 	var numInList = list.length;
 	list.hide();
+
 	if (numInList > numToShow) {
 		button.show();
 	}
@@ -239,39 +253,24 @@ $(document).ready(function () {
 
 });
 
-const checkboxTitle = document.querySelector('.checkbox__title');
-const checkboxList = document.querySelector('.checkbox__list');
+var editionBtn = $(".edition__subtitle");
 
-checkboxTitle.addEventListener('click', () => {
-	checkboxTitle.classList.toggle('checkbox__title--active');
-	checkboxList.classList.toggle('checkbox__list--active');
-});
+if ($(window).width() < 720) {
+	$(".checkbox__input:not(:checked)").parent().parent().hide(600);
 
+	editionBtn.on("click", function () {
+		editionBtn.toggleClass("checkbox__title--active");
+		checkboxShow();
+	});
+}
 
-$(document).ready(function () {
-	$('.checkbox__item:nth-child(4)').children().children().click();
-
-
-
-});
-
-
-$('.checkbox__input').click(function () {
-	var el = $(this);
-
-	if (el.prop('checked')) {
-		$('.checkbox__filter').append('<div class="checkbox__name checkbox__name--added" valu="' + el.val() + '">' + el.val() + '</div>');
+function checkboxShow() {
+	if (editionBtn.hasClass("checkbox__title--active")) {
+		$(".checkbox__input:not(:checked)").parent().parent().show(600);
+	} else {
+		$(".checkbox__input:not(:checked)").parent().parent().hide(600);
 	}
-	else {
-		$('[valu="' + el.val() + '"]').remove();
-	}
-
-});
-
-$('.checkbox__btn').click(function () {
-	$('.checkbox__input').prop('checked', false);
-	$('.checkbox__name--added').remove();
-});
+};
 
 var max_chars = 5;
 $('input[type=number]').keydown(function (e) {
@@ -287,31 +286,62 @@ $('input[type=number]').keyup(function (e) {
 });
 
 var selector = document.querySelector("input[type='tel']");
-
 var im = new Inputmask("+7 (999) 999-99-99");
 im.mask(selector);
 
-new JustValidate('.contact__form', {
-	rules: {
-		name: {
-			required: true,
-			minLength: 2,
-			maxLenght: 20,
-		},
-		tel: {
-			required: true,
-			function: (name, value) => {
-				const phone = selector.Inputmask.unmaskedvalue();
-				return Number(phone) && phone.length === 10;
-			}
-		},
-	},
+function validateForms(selector, rules) {
+	new window.JustValidate(selector, {
+		rules: rules,
+		submitHandler: function (form, values, ajax) {
+			console.log(form);
 
-	messages: {
-		name: ' ',
-		tel: ' ',
-	}
+			let formData = new FormData(form);
+
+			fetch("mail.php", {
+				method: "POST",
+				body: formData
+			})
+				.then(function (data) {
+					console.log(data);
+					console.log('Отправлено');
+					form.reset();
+				});
+		}
+	});
+}
+
+validateForms('.contact__form', {
+	name: {
+		required: true,
+		minLength: 2,
+	},
+	tel: {
+		required: true,
+	},
 });
+
+
+// new JustValidate('.contact__form', {
+// 	rules: {
+// 		name: {
+// 			required: true,
+// 			minLength: 2,
+// 			maxLenght: 20,
+// 		},
+// 		tel: {
+// 			required: true,
+// 			function: (name, value) => {
+// 				const phone = selector.Inputmask.unmaskedvalue();
+// 				return Number(phone) && phone.length === 10;
+// 			}
+// 		},
+// 	},
+
+// 	messages: {
+// 		name: ' ',
+// 		tel: ' ',
+// 	}
+// });
 
 ymaps.ready(init);
 function init() {

@@ -574,7 +574,7 @@
 						количества
 						скачиваний <a href="#">авторизуйтесь,</a> либо воспользуйтесь лицензией.
 					</p>
-					<div class="overlay fade" >
+					<div class="overlay fade">
 					</div>
 					<div class="gallery__modal gallery-modal fade" role="dialog" tabindex="1">
 						<button class="gallery-modal__close btn-reset" aria-label="Закрыть карточку картины"></button>
@@ -595,7 +595,7 @@
 						<ul class="tab" role="tablist">
 							<li class="tab__item" role="tab">
 								<button class="tab__btn btn-reset" aria-label="Франция"
-									style="background-image: url('./icon/tab/france.jpg');"  data-tabs-path="france"></button>
+									style="background-image: url('./icon/tab/france.jpg');" data-tabs-path="france"></button>
 							</li>
 							<li class="tab__item" role="tab">
 								<button class="tab__btn btn-reset" aria-label="Германия"
@@ -1855,7 +1855,7 @@
 								</li>
 								<li class="checkbox__item">
 									<label class="checkbox__label">
-										<input type="checkbox" class="checkbox__input" value="Дизайн">
+										<input type="checkbox" class="checkbox__input" value="Дизайн" checked>
 										<span class="checkbox__check"></span>
 										<span class="checkbox__name">Дизайн</span>
 									</label>
@@ -1918,9 +1918,9 @@
 								</li>
 							</ul>
 						</div>
-						<div class="checkbox__filter">
+						<!-- <div class="checkbox__filter">
 							<button class="checkbox__btn btn-reset"></button>
-						</div>
+						</div> -->
 						<div class="edition__range range">
 							<div class="edition__subtitle des">Цена</div>
 							<div class="range__inner">
@@ -2204,15 +2204,17 @@
 									<legend>
 										<h3 class="contact__form-subtitle subtitle">Заказать обратный звонок</h3>
 									</legend>
+									<!-- <input type="hidden" name="admin_email[]" value="tasha.sk666@gmail.com"> -->
+									<input type="hidden" name="form_subject" value="Заявка с сайта Blanchard">
 									<label class="contact__form-label">
 										<span class="visually-hidden">Введите ваше имя</span>
-										<input type="text" data-validate-field="name" autocomplete="off" id="user-name" name="name"
-											class="contact__input" placeholder="Имя*" required maxlength="20">
+										<input type="text" data-validate-field="name" id="user-name" name="name"
+											class="contact__input" placeholder="Имя*">
 									</label>
 									<label class="contact__form-label">
 										<span class="visually-hidden">Введите ваш телефон</span>
-										<input type="tel" data-validate-field="tel" autocomplete="off" id="user-phone" name="phone"
-											class="contact__input" placeholder="Телефон*" required>
+										<input type="tel" data-validate-field="tel" id="user-phone" name="phone"
+											class="contact__input" placeholder="Телефон*">
 									</label>
 									<div class="contact__form-inner">
 										<button type="submit" class="contact__btn btn btn-reset">Заказать</button>
