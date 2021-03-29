@@ -253,22 +253,25 @@ $(document).ready(function () {
 
 });
 
-var editionBtn = $(".edition__subtitle");
+var editionTitle = $(".edition__subtitle");
 
 if ($(window).width() < 720) {
-	$(".checkbox__input:not(:checked)").parent().parent().hide(600);
+	$(".checkbox__input:not(:checked)").parent().parent().hide(400);
+	$(".checkbox__input:checked").parent().parent().addClass('checkbox__item--active');
 
-	editionBtn.on("click", function () {
-		editionBtn.toggleClass("checkbox__title--active");
+	editionTitle.on("click", function () {
+		editionTitle.toggleClass("checkbox__title--active");
 		checkboxShow();
 	});
 }
 
 function checkboxShow() {
-	if (editionBtn.hasClass("checkbox__title--active")) {
-		$(".checkbox__input:not(:checked)").parent().parent().show(600);
+	if (editionTitle.hasClass("checkbox__title--active")) {
+		$(".checkbox__input:not(:checked)").parent().parent().show(400);
+		$(".checkbox__input").parent().parent().removeClass('checkbox__item--active');
 	} else {
-		$(".checkbox__input:not(:checked)").parent().parent().hide(600);
+		$(".checkbox__input:not(:checked)").parent().parent().hide(400);
+		$(".checkbox__input:checked").parent().parent().addClass('checkbox__item--active');
 	}
 };
 
@@ -319,29 +322,6 @@ validateForms('.contact__form', {
 		required: true,
 	},
 });
-
-
-// new JustValidate('.contact__form', {
-// 	rules: {
-// 		name: {
-// 			required: true,
-// 			minLength: 2,
-// 			maxLenght: 20,
-// 		},
-// 		tel: {
-// 			required: true,
-// 			function: (name, value) => {
-// 				const phone = selector.Inputmask.unmaskedvalue();
-// 				return Number(phone) && phone.length === 10;
-// 			}
-// 		},
-// 	},
-
-// 	messages: {
-// 		name: ' ',
-// 		tel: ' ',
-// 	}
-// });
 
 ymaps.ready(init);
 function init() {

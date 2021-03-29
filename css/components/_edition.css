@@ -32,8 +32,35 @@
 }
 
 .checkbox__item {
+	position: relative;
 	line-height: 1.8;
 	white-space: nowrap;
+}
+
+.checkbox__item:before,
+.checkbox__item:after {
+	display: none;
+	content: "";
+	position: absolute;
+	right: 0;
+	top: 50%;
+	transform: translateY(-50%);
+	width: 16px;
+	height: 1px;
+	background-color: var(--purple);
+}
+
+.checkbox__item:before {
+	transform: rotate(-45deg);
+}
+
+.checkbox__item:after {
+	transform: rotate(45deg);
+}
+
+.checkbox__item--active:before,
+.checkbox__item--active:after {
+	display: block;
 }
 
 .checkbox__name {
