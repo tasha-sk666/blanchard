@@ -6,7 +6,7 @@ foreach ( $_POST["admin_email"] as $key => $value ) {
 	array_push($admin_email, $value);
 }
 
-$admin_email = 'tasha.sk666@gmail.com';
+// $admin_email = 'tasha.sk666@gmail.com';
 
 $form_subject = trim($_POST["form_subject"]);
 
@@ -46,3 +46,5 @@ $mail->Subject = $form_subject;
 
 $body = $message;
 $mail->msgHTML($body);
+$mail->send();
+?>

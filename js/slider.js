@@ -1,26 +1,24 @@
 const projectSlider = document.querySelector('.project__slider-container');
 var mySwiperProject = new Swiper(projectSlider, {
+	spaceBetween: 50,
+	centeredSlides: true,
+	loop: true,
+	slideClass: 'project__card',
 	navigation: {
 		nextEl: '.project__swiper-button-next',
 		prevEl: '.project__swiper-button-prev',
 	},
-	spaceBetween: 50,
-	loop: true,
-	slideClass: 'project__card',
 	breakpoints: {
 		1650: {
 			slidesPerView: 3,
 		},
 		600: {
-			spaceBetween: 50,
 			slidesPerView: 2,
 		},
 		320: {
 			slidesPerView: 1,
 		}
 	},
-	observer: true,
-	observeParents: true,
 });
 
 const heroSlider = document.querySelector('.hero__slider-container');

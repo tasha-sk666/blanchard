@@ -93,7 +93,7 @@
 
 .project__slider {
 	position: relative;
-	margin: 0 70px;
+	margin: 0 68px;
 }
 
 .project__swiper-button-prev,
@@ -127,8 +127,9 @@
 }
 
 .project__card {
-	height: 150px;
 	flex-shrink: 0;
+	padding: 2px;
+	height: 150px;
 }
 
 .project__card-content {
