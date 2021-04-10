@@ -1,13 +1,13 @@
 const projectSlider = document.querySelector('.project__slider-container');
 var mySwiperProject = new Swiper(projectSlider, {
-	spaceBetween: 50,
-	centeredSlides: true,
-	loop: true,
+
 	slideClass: 'project__card',
 	navigation: {
 		nextEl: '.project__swiper-button-next',
 		prevEl: '.project__swiper-button-prev',
 	},
+	spaceBetween: 50,
+	loop: true,
 	breakpoints: {
 		1650: {
 			slidesPerView: 3,
@@ -138,7 +138,7 @@ function initSwiperEdition() {
 			slidesPerGroup: 3,
 			paginationClickable: true,
 			breakpoints: {
-				1680: {
+				1400: {
 					slidesPerView: 3,
 					slidesPerGroup: 3,
 					spaceBetween: 45,

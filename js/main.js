@@ -64,83 +64,15 @@ const NewSelect = () => {
 	const element = document.querySelector('#gallerySelect');
 	const choices = new Choices(element, {
 		searchEnabled: false,
-		shouldSort: false,
 		placeholder: true,
 	});
 
 	let ariaLabel = element.getAttribute('aria-label');
 	element.closest('.choices').setAttribute('aria-label', ariaLabel);
+
+	console.log(element)
 };
 NewSelect();
-
-
-var overlay = $('.overlay')
-var cardBtn = $(".gallery__card-btn");
-var modal = $(".gallery-modal");
-var close = $(".gallery-modal__close");
-
-cardBtn.on("click", function () {
-
-	if (overlay.css("display") == "none") {
-		overlay.addClass('overlay--open');
-		modal.addClass('gallery-modal--open');
-		setTimeout(function () {
-			overlay.addClass('in');
-			modal.addClass('in');
-		}, 15);
-	}
-	else {
-		modal.removeClass('in');
-		overlay.removeClass('in');
-		modal.one('transitionend', function (e) {
-			modal.removeClass('gallery-modal--open');
-		});
-		overlay.one('transitionend', function (e) {
-			overlay.removeClass('overlay--open');
-		});
-	}
-
-	img = $(this).parent().find(".gallery__card-image").attr("src");
-	imgAlt = $(this).parent().find(".gallery__card-image").attr("alt");
-	subtitle = $(this).parent().find(".gallery__card-subtitle").html();
-	namePicture = $(this).parent().find(".gallery__card-name").html();
-	data = $(this).parent().find(".gallery__card-subds").html();
-	descr = $(this).parent().find(".gallery__card-des").html();
-
-	$(".gallery-modal__img").attr("src", img);
-	$(".gallery-modal__img").attr("alt", imgAlt);
-	$(".gallery-modal__subtitle").html(subtitle);
-	$(".gallery-modal__name").html(namePicture);
-	$(".gallery-modal__subdes").html(data);
-	$(".gallery-modal__des").html(descr);
-
-	return false;
-});
-
-close.on("click", function () {
-	modal.removeClass('in');
-	overlay.removeClass('in');
-	modal.one('transitionend', function (e) {
-		modal.removeClass('gallery-modal--open');
-	});
-	overlay.one('transitionend', function (e) {
-		overlay.removeClass('overlay--open');
-	});
-});
-
-overlay.on("click", function (event) {
-	e = event || window.event;
-	if (e.target == this) {
-		modal.removeClass('in');
-		overlay.removeClass('in');
-		modal.one('transitionend', function (e) {
-			modal.removeClass('gallery-modal--open');
-		});
-		overlay.one('transitionend', function (e) {
-			overlay.removeClass('overlay--open');
-		});
-	}
-});
 
 $(function () {
 	var icons = {
@@ -320,10 +252,14 @@ validateForms('.contact__form', {
 	},
 	tel: {
 		required: true,
+		function: () => {
+			const e = gi.inputmask.unmaskedvalue();
+			return Number(e) && 10 === e.length
+		}
 	},
 });
 
-ymaps.ready(init);
+
 function init() {
 
 	var myMap = new ymaps.Map("map", {
@@ -331,7 +267,7 @@ function init() {
 		zoom: 16,
 		controls: [],
 	}, {
-		searchControlProvider: 'yandex#search'
+		searchControlProvider: 'yandex#search',
 	});
 
 	var myPlacemark = new ymaps.Placemark([55.758463, 37.601079], {}, {
@@ -341,8 +277,13 @@ function init() {
 		iconImageOffset: [-5, -5]
 	});
 
+	if ($(window).width() < 980) {
+		myMap.behaviors.disable('drag');
+	}
+
 	myMap.geoObjects.add(myPlacemark);
 }
 
-function myFunction() {
-}
+ymaps.ready(init);
+
+

@@ -574,16 +574,18 @@
 						количества
 						скачиваний <a href="#">авторизуйтесь,</a> либо воспользуйтесь лицензией.
 					</p>
-					<div class="overlay fade">
-					</div>
-					<div class="gallery__modal gallery-modal fade" role="dialog" tabindex="1">
-						<button class="gallery-modal__close btn-reset" aria-label="Закрыть карточку картины"></button>
-						<img src="#" alt="" class="gallery-modal__img">
-						<div class="gallery-modal__content">
-							<h3 class="gallery-modal__subtitle"> </h3>
-							<h4 class="gallery-modal__name"></h4>
-							<p class="gallery-modal__subdes"></p>
-							<p class="gallery-modal__des"></p>
+					<div class="modals">
+						<div class="modals__overlay fade fix-block">
+							<div class="gallery__modal gallery-modal fade" role="dialog" tabindex="1">
+								<button class="gallery-modal__close btn-reset" aria-label="Закрыть карточку картины"></button>
+								<img src="#" alt="" class="gallery-modal__img">
+								<div class="gallery-modal__content">
+									<h3 class="gallery-modal__subtitle"> </h3>
+									<h4 class="gallery-modal__name"></h4>
+									<p class="gallery-modal__subdes"></p>
+									<p class="gallery-modal__des"></p>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -2268,6 +2270,7 @@
 	<script src="https://api-maps.yandex.ru/2.1/?apikey=00dd0c3c-03d1-4425-bc9e-72cda7ab59cc&lang=ru_RU"></script>
 	<script src="./js/main.js"></script>
 	<script src="./js/slider.js"></script>
+	<script src="./js/modal.js"></script>
 </body>
 
 </html>
