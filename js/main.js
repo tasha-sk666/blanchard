@@ -252,13 +252,8 @@ validateForms('.contact__form', {
 	},
 	tel: {
 		required: true,
-		function: () => {
-			const e = gi.inputmask.unmaskedvalue();
-			return Number(e) && 10 === e.length
-		}
 	},
 });
-
 
 function init() {
 
