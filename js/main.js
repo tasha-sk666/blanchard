@@ -252,6 +252,10 @@ validateForms('.contact__form', {
 	},
 	tel: {
 		required: true,
+		function: (name, value) => {
+			const phone = selector.inputmask.unmaskedvalue();
+			return Number(phone) && phone.length === 10;
+		}
 	},
 });
 

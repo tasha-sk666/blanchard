@@ -121,6 +121,10 @@
 	color: #999999;
 }
 
+.is-selected {
+	display: none;
+}
+
 .gallery__des {
 	margin-top: auto;
 	width: 95%;
