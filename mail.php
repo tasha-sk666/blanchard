@@ -10,6 +10,7 @@ foreach ( $_POST["admin_email"] as $key => $value ) {
 
 $form_subject = trim($_POST["form_subject"]);
 
+
 $mail = new PHPMailer;
 $mail->CharSet = 'UTF-8';
 

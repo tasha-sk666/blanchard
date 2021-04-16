@@ -224,9 +224,19 @@ var selector = document.querySelector("input[type='tel']");
 var im = new Inputmask("+7 (999) 999-99-99");
 im.mask(selector);
 
-function validateForms(selector, rules) {
+function validateForms(selector, rules, succesModal) {
 	new window.JustValidate(selector, {
 		rules: rules,
+		messages: {
+			name: {
+				required: "Введите ваше имя",
+				minLength: "Ваше имя должно содержать больше 2 символов"
+			},
+			tel: {
+				required: "Введите ваш телефон",
+				function: "Вы ввели не весь номер телефона"
+			}
+		},
 		submitHandler: function (form, values, ajax) {
 			console.log(form);
 
@@ -238,7 +248,8 @@ function validateForms(selector, rules) {
 			})
 				.then(function (data) {
 					console.log(data);
-					console.log('Отправлено');
+					console.log(succesModal);
+					
 					form.reset();
 				});
 		}
@@ -256,8 +267,9 @@ validateForms('.contact__form', {
 			const phone = selector.inputmask.unmaskedvalue();
 			return Number(phone) && phone.length === 10;
 		}
-	},
-});
+	}
+},
+'.thanks-popup');
 
 function init() {
 

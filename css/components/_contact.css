@@ -84,9 +84,19 @@
 }
 
 .js-validate-error-label {
-	font-size: 0;
-	line-height: 0;
-	visibility: hidden;
+	position: absolute;
+	font-size: 14px;
+	top: -40%;
+}
+
+.thanks-popup {
+	position: relative;
+	top: 50%;
+	left: 0;
+	display: block;
+	width: 500px;
+	height: 500px;
+	background-color:red;
 }
 
 .contact__social-subtitle {
