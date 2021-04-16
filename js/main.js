@@ -248,8 +248,7 @@ function validateForms(selector, rules, succesModal) {
 			})
 				.then(function (data) {
 					console.log(data);
-					console.log(succesModal);
-					
+					thanksPopup();
 					form.reset();
 				});
 		}
@@ -269,7 +268,7 @@ validateForms('.contact__form', {
 		}
 	}
 },
-'.thanks-popup');
+'.modal-thanks');
 
 function init() {
 

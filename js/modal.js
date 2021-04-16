@@ -3,6 +3,7 @@ var overlay = $('.modals__overlay')
 var cardBtn = $(".gallery__card-btn");
 var modal = $(".gallery-modal");
 var close = $(".gallery-modal__close");
+var thanks = $(".modal-thanks");
 const body = document.body;
 const fixBlocks = document.querySelectorAll('.fix-block');
 
@@ -28,6 +29,7 @@ let enableScroll = function () {
 	body.style.paddingRight = '0px';
 	window.scroll({top: pagePosition, left: 0});
 	body.removeAttribute('data-position');
+
 }
 
 cardBtn.on("click", function () {
@@ -75,7 +77,6 @@ cardBtn.on("click", function () {
 
 close.on("click", function () {
 	enableScroll();
-
 	modal.removeClass('in');
 	overlay.removeClass('in');
 	modal.one('transitionend', function (e) {
@@ -84,15 +85,16 @@ close.on("click", function () {
 	overlay.one('transitionend', function (e) {
 		overlay.removeClass('modals__overlay--open');
 	});
+	return false;
 });
 
 overlay.on("click", function (event) {
+
 	enableScroll();
 
 	e = event || window.event;
 	if (e.target == this) {
 		modal.removeClass('in');
-		overlay.removeClass('in');
 		modal.one('transitionend', function (e) {
 			modal.removeClass('gallery-modal--open');
 		});
@@ -101,3 +103,16 @@ overlay.on("click", function (event) {
 		});
 	}
 });
+
+function thanksPopup() {
+	var val = $('#user-name').val();
+	$('.modal-thanks__title').html(val + ', cпасибо за заявку!');
+		thanks.addClass('modal-thanks--open');
+		setTimeout(function () {
+			thanks.addClass('in');
+		}, 15);
+		setTimeout(function(){
+			$('.modal-thanks').delay(1800).fadeOut(700).removeClass('in');
+			thanks.removeClass('modal-thanks--open');
+		},1800);
+}

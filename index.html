@@ -574,20 +574,7 @@
 						количества
 						скачиваний <a href="#">авторизуйтесь,</a> либо воспользуйтесь лицензией.
 					</p>
-					<div class="modals">
-						<div class="modals__overlay fade fix-block">
-							<div class="gallery__modal gallery-modal fade" role="dialog" tabindex="1">
-								<button class="gallery-modal__close btn-reset" aria-label="Закрыть карточку картины"></button>
-								<img src="#" alt="" class="gallery-modal__img">
-								<div class="gallery-modal__content">
-									<h3 class="gallery-modal__subtitle"> </h3>
-									<h4 class="gallery-modal__name"></h4>
-									<p class="gallery-modal__subdes"></p>
-									<p class="gallery-modal__des"></p>
-								</div>
-							</div>
-						</div>
-					</div>
+
 				</div>
 			</section>
 			<section class="catalog" id="catalog">
@@ -840,7 +827,8 @@
 										<h3 class="catalog__subtitle subtitle">Джованни да Удине</h3>
 										<p class="catalog__subdes">1390-е — 1 июля 1424.</p>
 										<p class="catalog__card-des des">
-											Учился сначала у Джованни Мартино (итал. Pellegrino da San Daniele) в Удине, зат��������м переехал в
+											Учился сначала у Джованни Мартино (итал. Pellegrino da San Daniele) в Удине, зат��������м переехал
+											в
 											Венецию, где стал учеником Джорджоне. В 1514 году переехал в Рим, где поступил в мастерскую
 											Рафаэля и считался одним из наиболее талантливых его учеников. Джорджо Вазари отмечал его
 											стремление к гротеску и большую любовь к изображению природы — как растений и животных, так и
@@ -2207,19 +2195,20 @@
 									<input type="hidden" name="form_subject" value="Заявка с сайта Blanchard">
 									<label class="contact__form-label">
 										<span class="visually-hidden">Введите ваше имя</span>
-										<input type="text" data-validate-field="name" id="user-name" name="name"
-											class="contact__input" placeholder="Имя*">
+										<input type="text" data-validate-field="name" id="user-name" name="name" class="contact__input"
+											placeholder="Имя*">
 									</label>
 									<label class="contact__form-label">
 										<span class="visually-hidden">Введите ваш телефон</span>
-										<input type="tel" data-validate-field="tel" id="user-phone" name="phone"
-											class="contact__input" placeholder="Телефон*">
+										<input type="tel" data-validate-field="tel" id="user-phone" name="phone" class="contact__input"
+											placeholder="Телефон*">
 									</label>
 									<div class="contact__form-inner">
 										<button type="submit" class="contact__btn btn btn-reset">Заказать</button>
 									</div>
 								</fieldset>
 							</form>
+
 							<h3 class="contact__social-subtitle subtitle">Связаться в один клик</h3>
 							<ul class="contact__social">
 								<li class="contact__social-item">
@@ -2259,6 +2248,28 @@
 				</ul>
 			</div>
 		</footer>
+	</div>
+	<div class="modals">
+		<div class="modals__overlay fade fix-block">
+			<div class="modal gallery-modal fade" role="dialog" tabindex="1">
+				<button class="gallery-modal__close btn-reset" aria-label="Закрыть карточку картины"></button>
+				<img src="#" alt="" class="gallery-modal__img">
+				<div class="gallery-modal__content">
+					<h3 class="gallery-modal__subtitle"> </h3>
+					<h4 class="gallery-modal__name"></h4>
+					<p class="gallery-modal__subdes"></p>
+					<p class="gallery-modal__des"></p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="modal-thanks fade">
+		<div class="modal-thanks__bg" style="background-image: url('./img/dropdown/drop-3.jpg');"></div>
+		<div class="modal-thanks__inner">
+			<div class="modal-thanks__title subtitle"></div>
+			<div class="modal-thanks__desc desc">Заявка отправлена. Наш менеджер свяжется с Вами в ближайшее время.
+			</div>
+		</div>
 	</div>
 	<script src="./libs/jquery-3.4.1.min.js"></script>
 	<script src="./libs/swiper.min.js"></script>
